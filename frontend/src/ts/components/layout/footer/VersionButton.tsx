@@ -10,12 +10,6 @@ import { Fa } from "../../common/Fa";
 
 export function VersionButton(): JSXElement {
   const [indicatorVisible, setIndicatorVisible] = createSignal(true);
-  const getVersionText = (): string => {
-    if (isDevEnvironment()) {
-      return "localhost";
-    }
-    return getVersion().text;
-  };
 
   const handleClick = (e: MouseEvent): void => {
     if (e.shiftKey) {
@@ -42,20 +36,22 @@ export function VersionButton(): JSXElement {
   };
 
   const showNewIndicator = (): boolean =>
-    !isDevEnvironment() && getVersion().isNew && indicatorVisible();
+    getVersion().isNew && indicatorVisible();
 
   return (
-    <button type="button" class="textButton flex" onClick={handleClick}>
-      <Fa icon="fa-code-branch" fixedWidth />
-      <div class="text">{getVersionText()}</div>
-      <Show when={showNewIndicator()}>
-        <div
-          class="rounded-half bg-main px-1 text-bg"
-          onClick={handleIndicatorClick}
-        >
-          new
-        </div>
-      </Show>
-    </button>
+    <Show when={!isDevEnvironment()}>
+      <button type="button" class="textButton flex" onClick={handleClick}>
+        <Fa icon="fa-code-branch" fixedWidth />
+        <div class="text">{getVersion().text}</div>
+        <Show when={showNewIndicator()}>
+          <div
+            class="rounded-half bg-main px-1 text-bg"
+            onClick={handleIndicatorClick}
+          >
+            new
+          </div>
+        </Show>
+      </button>
+    </Show>
   );
 }
