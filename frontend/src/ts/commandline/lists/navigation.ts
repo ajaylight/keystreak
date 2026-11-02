@@ -26,15 +26,6 @@ const commands: Command[] = [
     },
   },
   {
-    id: "viewAbout",
-    display: "View About Page",
-    alias: "navigate go to",
-    icon: "fa-info",
-    exec: (): void => {
-      void navigate({ to: "/about" });
-    },
-  },
-  {
     id: "viewSettings",
     display: "View Settings Page",
     alias: "navigate go to",
