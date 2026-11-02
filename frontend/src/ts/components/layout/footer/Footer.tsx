@@ -34,41 +34,12 @@ export function Footer(): JSXElement {
           />
           <Button
             variant="text"
-            text="support"
-            fa={{
-              icon: "fa-donate",
-              fixedWidth: true,
-            }}
-            onClick={() => showModal("Support")}
-          />
-          <Button
-            variant="text"
             text="github"
             fa={{
               icon: "fa-code",
               fixedWidth: true,
             }}
-            href="https://github.com/monkeytypegame/monkeytype"
-          />
-          <Button
-            variant="text"
-            text="discord"
-            fa={{
-              icon: "fa-discord",
-              variant: "brand",
-              fixedWidth: true,
-            }}
-            href="https://www.discord.gg/monkeytype"
-          />
-          <Button
-            variant="text"
-            text="twitter"
-            fa={{
-              icon: "fa-twitter",
-              variant: "brand",
-              fixedWidth: true,
-            }}
-            href="https://x.com/monkeytype"
+            href="https://github.com/ajaylight/keystreak"
           />
           <Button
             variant="text"
@@ -78,15 +49,6 @@ export function Footer(): JSXElement {
               fixedWidth: true,
             }}
             href="/terms-of-service.html"
-          />
-          <Button
-            href="/security-policy.html"
-            variant="text"
-            text="security"
-            fa={{
-              icon: "fa-shield-alt",
-              fixedWidth: true,
-            }}
           />
           <Button
             href="/privacy-policy.html"
