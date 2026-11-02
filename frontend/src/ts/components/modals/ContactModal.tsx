@@ -1,94 +1,26 @@
-import { Link } from "@tanstack/solid-router";
 import { JSXElement } from "solid-js";
 
-import { hideModal } from "../../states/modals";
 import { AnimatedModal } from "../common/AnimatedModal";
 import { Button } from "../common/Button";
 
 export function ContactModal(): JSXElement {
-  const buttonClass = " gap-4 text-md p-4 text-lg justify-start";
-
   return (
-    <AnimatedModal id="Contact" modalClass="max-w-4xl" title="Contact">
+    <AnimatedModal id="Contact" modalClass="max-w-4xl" title="Contact ComboKeys">
       <div>
-        Feel free to send an email to contact@monkeytype.com. For business
-        inquiries, email jack@monkeytype.com (the buttons below will open the
-        default mail client).
-        <br />
-        <br />
-        Please <span class="text-error">do not send</span> requests to delete
-        account, update email, update name or clear personal bests - you can do
-        that in the{" "}
-        <Link
-          to="/account-settings"
-          onClick={() => {
-            hideModal("Contact");
-          }}
-        >
-          account settings
-        </Link>{" "}
-        page.
+        For questions, feedback, suggestions, or bug reports, visit the
+        ComboKeys GitHub repository. An official support email can be added
+        here when one is available.
       </div>
-      <div class="mt-4 grid gap-4 md:grid-cols-2">
+      <div class="mt-4">
         <Button
           variant="button"
-          href="mailto:contact@monkeytype.com?subject=[Question] "
-          text="Question"
-          class={buttonClass}
+          href="https://github.com/ajaylight/keystreak"
+          text="Open ComboKeys on GitHub"
+          class="gap-4 p-4 text-lg"
           fa={{
-            icon: "fa-question-circle",
+            icon: "fa-github",
             fixedWidth: true,
           }}
-        />
-        <Button
-          variant="button"
-          href="mailto:contact@monkeytype.com?subject=[Feedback] "
-          fa={{
-            icon: "fa-comment-dots",
-            fixedWidth: true,
-          }}
-          text="Feedback"
-          class={buttonClass}
-        />
-        <Button
-          variant="button"
-          href="mailto:support@monkeytype.com?subject=[Bug] "
-          fa={{
-            icon: "fa-bug",
-            fixedWidth: true,
-          }}
-          text="Bug Report"
-          class={buttonClass}
-        />
-        <Button
-          variant="button"
-          href="mailto:support@monkeytype.com?subject=[Account] "
-          fa={{
-            icon: "fa-user-circle",
-            fixedWidth: true,
-          }}
-          text="Account Help"
-          class={buttonClass}
-        />
-        <Button
-          variant="button"
-          href="mailto:jack@monkeytype.com?subject=[Business] "
-          fa={{
-            icon: "fa-briefcase",
-            fixedWidth: true,
-          }}
-          text="Business Inquiry"
-          class={buttonClass}
-        />
-        <Button
-          variant="button"
-          href="mailto:contact@monkeytype.com?subject=[Other] "
-          fa={{
-            icon: "fa-ellipsis-h",
-            fixedWidth: true,
-          }}
-          text="Other"
-          class={buttonClass}
         />
       </div>
     </AnimatedModal>
