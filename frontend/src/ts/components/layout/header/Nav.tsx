@@ -107,18 +107,6 @@ export function Nav(): JSXElement {
       <Button
         variant="text"
         fa={{
-          icon: "fa-info",
-          fixedWidth: true,
-        }}
-        class={buttonClass()}
-        dataset={{
-          "data-nav-item": "about",
-        }}
-        to="/about"
-      />
-      <Button
-        variant="text"
-        fa={{
           icon: "fa-cog",
           fixedWidth: true,
         }}
