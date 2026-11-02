@@ -57,7 +57,7 @@ export function SoundPanel(): JSXElement {
         <div
           role="dialog"
           aria-label="Sound settings"
-          class="absolute right-0 bottom-full z-50 mb-3 grid max-h-[min(70vh,38rem)] w-[min(28rem,calc(100vw-2rem))] gap-4 overflow-y-auto rounded-double border border-sub bg-bg p-4 text-left text-xs text-text shadow-2xl"
+          class="fixed right-4 bottom-16 z-[100] grid max-h-[min(70vh,38rem)] w-[min(28rem,calc(100vw-2rem))] gap-4 overflow-y-auto rounded-double border border-sub bg-bg p-4 text-left text-xs text-text shadow-2xl"
         >
           <div class="flex items-center justify-between">
             <div class="text-base font-bold">sound</div>
