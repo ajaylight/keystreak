@@ -17,7 +17,6 @@ import {
   getAnimatedLevel,
   setAnimatedLevel,
 } from "../../../states/header";
-import { showModal } from "../../../states/modals";
 import { getRoutePage } from "../../../states/router";
 import { getSnapshot } from "../../../states/snapshot";
 import { getFocus } from "../../../states/test";
@@ -26,7 +25,6 @@ import { getLevelFromTotalXp } from "../../../utils/levels";
 import { Anime } from "../../common/anime";
 import { AnimePresence } from "../../common/anime/AnimePresence";
 import { Button } from "../../common/Button";
-import { NotificationBubble } from "../../common/NotificationBubble";
 import { User } from "../../common/User";
 import { AccountMenu } from "./AccountMenu";
 import { AccountXpBar } from "./AccountXpBar";
@@ -62,13 +60,6 @@ export function Nav(): JSXElement {
 
   const showFriendsNotificationBubble = createMemo((): boolean => {
     return pendingConnections().length > 0;
-  });
-
-  const showAlertsNotificationBubble = createMemo((): boolean => {
-    const snapshot = getSnapshot();
-    if (snapshot === undefined) return false;
-
-    return snapshot.inboxUnreadSize > 0;
   });
 
   const serverConfig = useQuery(() => getServerConfigurationQueryOptions());
@@ -117,25 +108,6 @@ export function Nav(): JSXElement {
         }}
       />
       <div class="grow"></div>
-      <Button
-        variant="text"
-        fa={{
-          icon: "fa-bell",
-          fixedWidth: true,
-        }}
-        dataset={{
-          "data-nav-item": "alerts",
-        }}
-        onClick={() => {
-          showModal("Alerts");
-        }}
-        class={cn(buttonClass(), "relative")}
-      >
-        <NotificationBubble
-          variant="fromCorner"
-          show={showAlertsNotificationBubble()}
-        />
-      </Button>
       <AnimePresence exitBeforeEnter>
         <Show
           when={getSnapshot()}
