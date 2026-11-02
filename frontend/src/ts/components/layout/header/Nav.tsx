@@ -95,7 +95,7 @@ export function Nav(): JSXElement {
       <Button
         variant="text"
         fa={{
-          icon: "fa-crown",
+          icon: "fa-trophy",
           fixedWidth: true,
         }}
         dataset={{
