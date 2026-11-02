@@ -6,7 +6,6 @@ import { getFocus } from "../../../states/test";
 import { cn } from "../../../utils/cn";
 import { Button } from "../../common/Button";
 import { isLoadingShown } from "../../core/PageSwitcher";
-import { Keytips } from "./Keytips";
 import { ThemeIndicator } from "./ThemeIndicator";
 import { VersionButton } from "./VersionButton";
 
@@ -18,8 +17,6 @@ export function Footer(): JSXElement {
       })}
       inert={isLoadingShown()}
     >
-      <Keytips />
-
       <div
         class={cn("-m-2 flex justify-between gap-8 transition-opacity", {
           "opacity-0": getFocus(),
