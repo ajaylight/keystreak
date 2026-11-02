@@ -15,7 +15,6 @@ import {
 } from "../collections/connections";
 import { isResultsReady, waitForResultsReady } from "../collections/results";
 import { PageSwitcher } from "../components/core/PageSwitcher";
-import { AboutPage } from "../components/pages/AboutPage";
 import { AccountSettingsPage } from "../components/pages/account-settings/AccountSettingsPage";
 import { AccountPage } from "../components/pages/account/AccountPage";
 import { FriendsPage } from "../components/pages/connections/FriendsPage";
@@ -31,12 +30,6 @@ import {
   getRankQueryOptions,
 } from "../queries/leaderboards";
 import { getUserProfile } from "../queries/profile";
-import {
-  getContributorsQueryOptions,
-  getSpeedHistogramQueryOptions,
-  getSupportersQueryOptions,
-  getTypingStatsQueryOptions,
-} from "../queries/public";
 import { getServerConfigurationQueryOptions } from "../queries/server-configuration";
 import { AccountSettingsSearchSchema } from "../states/account-settings";
 import {
@@ -61,7 +54,6 @@ import { applyUrlActions } from "../url-actions/apply";
 export type PageName =
   | "loading"
   | "test"
-  | "about"
   | "settings"
   | "account"
   | "login"
@@ -250,20 +242,6 @@ const leaderboards = createRoute({
   },
 });
 
-const about = createRoute({
-  getParentRoute: () => userDataRoute,
-  path: "/about",
-  staticData: { page: "about" },
-  component: createRouterPage(AboutPage),
-  // background data: start the fetches, the page shows its section loaders
-  loader: ({ context: { queryClient } }) => {
-    void queryClient.prefetchQuery(getContributorsQueryOptions());
-    void queryClient.prefetchQuery(getSupportersQueryOptions());
-    void queryClient.prefetchQuery(getTypingStatsQueryOptions());
-    void queryClient.prefetchQuery(getSpeedHistogramQueryOptions());
-  },
-});
-
 const settings = createRoute({
   getParentRoute: () => userDataRoute,
   path: "/settings",
@@ -383,7 +361,6 @@ export const routeTree = root.addChildren([
   userDataRoute.addChildren([
     test,
     leaderboards,
-    about,
     settings,
     login,
     account,
