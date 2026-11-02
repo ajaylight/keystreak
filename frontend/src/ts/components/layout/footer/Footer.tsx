@@ -1,11 +1,13 @@
-import { JSXElement } from "solid-js";
+import { JSXElement, Show } from "solid-js";
 
 import { getIsScreenshotting } from "../../../states/core";
 import { showModal } from "../../../states/modals";
 import { getFocus } from "../../../states/test";
+import { getRoutePage } from "../../../states/router";
 import { cn } from "../../../utils/cn";
 import { Button } from "../../common/Button";
 import { isLoadingShown } from "../../core/PageSwitcher";
+import { SoundPanel } from "./SoundPanel";
 import { ThemeIndicator } from "./ThemeIndicator";
 import { VersionButton } from "./VersionButton";
 
@@ -61,7 +63,12 @@ export function Footer(): JSXElement {
           />
         </div>
         <div class="flex flex-col items-end text-right lg:flex-row">
-          <ThemeIndicator />
+          <div class="flex items-center gap-2">
+            <Show when={getRoutePage() === "test"}>
+              <SoundPanel />
+            </Show>
+            <ThemeIndicator />
+          </div>
           <VersionButton />
         </div>
       </div>
